@@ -2,7 +2,7 @@ const fs = require("fs");
 
 const readData = () => {
   return new Promise((success, fail) => {
-    fs.readFile("./data.json", "utf8", (err, data) => {
+    fs.readFile("data.json", "utf8", (err, data) => {
       if (err) return fail(err);
       return success(JSON.parse(data));
     });
@@ -11,7 +11,7 @@ const readData = () => {
 
 const writeData = (data) => {
   return new Promise((success, fail) => {
-    fs.writeFile("./data.json", JSON.stringify(data, null, " "), (err) => {
+    fs.writeFile("data.json", JSON.stringify(data, null, " "), (err) => {
       if (err) return fail(err);
       success();
     });
