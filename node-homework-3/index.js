@@ -13,18 +13,13 @@ const writeData = (data) => {
   return new Promise((success, fail) => {
     fs.writeFile("data.json", JSON.stringify(data, null, " "), (err) => {
       if (err) return fail(err);
-      success();
+      return success();
     });
   });
 };
 
 const getAllStudents = async () => {
-  try {
-    let students = await readData();
-    console.log(students);
-  } catch (err) {
-    console.log("Error getting students ", err);
-  }
+    return await readData();
 };
 
 // getAllStudents();
@@ -37,14 +32,9 @@ const getAllStudents = async () => {
 // 5. текстот треба да биде зачуван во фајлот | fs.writeFile
 
 const insertStudent = async (data) => {
-  try {
     let students = await readData();
     students.push(data);
     await writeData(students);
-    console.log(students);
-  } catch (err) {
-    console.log(err);
-  }
 };
 
 // insertStudent({
@@ -62,17 +52,12 @@ const insertStudent = async (data) => {
 // 5. текстот треба да биде зачуван во фајлот | fs.writeFile
 
 const modifyStudent = async (index, data) => {
-  try {
     let students = await readData();
     // students[index] = data;
     let modifiedStudent = students.map((item, i) =>
       i === index ? data : item
     );
     await writeData(modifiedStudent);
-    console.log(modifiedStudent);
-  } catch (err) {
-    console.log(err);
-  }
 };
 
 // modifyStudent(0, {
@@ -90,15 +75,10 @@ const modifyStudent = async (index, data) => {
 // 5. текстот треба да биде зачуван во фајлот | fs.writeFile
 
 const deleteStudent = async (index) => {
-  try {
     let students = await readData();
     // students.splice(index, 1);
     let deletedStudent = students.filter((item, i) => i !== index);
     await writeData(deletedStudent);
-    console.log(deletedStudent);
-  } catch (err) {
-    console.log(err);
-  }
 };
 
 // deleteStudent(1);
