@@ -9,26 +9,19 @@ const handler = (req, res) => {
   let samoglaski = 0;
   let soglaski = 0;
   let exception = 0;
-  let broevi = 0;
 
   if (name.length % 2 === 0) {
-    // TEST DALI BROJOT NA KARAKTERI E PAREN
     paren = " da ";
   } else {
     paren = " ne ";
-  }
+  };
 
-  bukvi.map((item) =>
-    item === "a" || item === "e" || item === "i" || item === "o" || item === "u" //BROJ NA SAMOGLASKI I SOGLASKI
-      ? (samoglaski += 1)
-      : (soglaski += 1)
-  );
+  bukvi.map((item) => item === "a" || item === "e" || item === "i" || item === "o" || item === "u" ? (samoglaski += 1) : (soglaski += 1));
 
   bukvi.map((item, index) => {
     const prev = bukvi[index - 1];
     const next = bukvi[index + 1];
     if (
-      //TEST ZA DALI R E SAMOGLASKA
       item === "r" &&
       prev !== "u" &&
       next !== "u" &&
@@ -43,18 +36,14 @@ const handler = (req, res) => {
       prev !== "r" &&
       next !== "r"
     ) {
-      exception += 1;
-      soglaski -= 1;
-    }
+        exception += 1;
+        soglaski -= 1;
+      }
   });
 
-  bukvi.map((item) => (!isNaN(item) ? (broevi += 1) : null)); // SLUCAJ AKO VO IMETO/ZBOROT IMA BROJKA
 
-  res.end(
-    `parno:${paren}, karakteri: ${name.length}, soglaski: ${
-      soglaski - broevi
-    }, samoglaski: ${samoglaski + exception}`
-  );
+  res.end(`parno:${paren}, karakteri: ${name.length}, soglaski: ${soglaski}, samoglaski: ${samoglaski + exception}`);
+
 };
 
 const server = http.createServer(handler);
