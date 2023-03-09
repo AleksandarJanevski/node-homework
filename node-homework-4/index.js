@@ -14,9 +14,13 @@ const handler = (req, res) => {
     paren = " da ";
   } else {
     paren = " ne ";
-  };
+  }
 
-  bukvi.map((item) => item === "a" || item === "e" || item === "i" || item === "o" || item === "u" ? (samoglaski += 1) : (soglaski += 1));
+  bukvi.map((item) =>
+    item === "a" || item === "e" || item === "i" || item === "o" || item === "u"
+      ? (samoglaski += 1)
+      : (soglaski += 1)
+  );
 
   bukvi.map((item, index) => {
     const prev = bukvi[index - 1];
@@ -36,14 +40,16 @@ const handler = (req, res) => {
       prev !== "r" &&
       next !== "r"
     ) {
-        exception += 1;
-        soglaski -= 1;
-      }
+      exception += 1;
+      soglaski -= 1;
+    }
   });
 
-
-  res.end(`parno:${paren}, karakteri: ${name.length}, soglaski: ${soglaski}, samoglaski: ${samoglaski + exception}`);
-
+  res.end(
+    `parno:${paren}, karakteri: ${
+      name.length
+    }, soglaski: ${soglaski}, samoglaski: ${samoglaski + exception}`
+  );
 };
 
 const server = http.createServer(handler);
