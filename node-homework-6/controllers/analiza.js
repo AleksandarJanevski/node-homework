@@ -31,9 +31,6 @@ const getFormular = async (req, res) => {
 }
 
 const postFormular = async (req, res) => {
-    if (req.body.tekst === '') {
-        return res.status(400).send('bad request')
-    }
     let rezultat = req.body.tekst.toLowerCase();
     let zborovi = rezultat.split(" ");
     let pomali = 0;
