@@ -6,13 +6,12 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/ime/:name", (req, res) => {
   let name = req.params.name.toLocaleLowerCase();
-  let paren = false;
-  paren = name.length % 2 === 0;
+  let paren = name.length % 2 === 0;
 
   let samoglaski = 0;
 
-  for (let ime of name) {
-    if (ime === "a" || ime === "e" || ime === "i" || ime === "o" || ime === "u") {
+  for (let bukva of name) {
+    if (bukva === "a" || bukva === "e" || bukva === "i" || bukva === "o" || bukva === "u") {
       samoglaski++;
     }
   }
@@ -25,13 +24,12 @@ app.get("/ime/:name", (req, res) => {
 
 app.post("/ime", (req, res) => {
   let name = req.body.name.toLocaleLowerCase();
-  let paren = false;
-  paren = name.length % 2 === 0;
+  let paren = name.length % 2 === 0;
 
   let samoglaski = 0;
 
-  for (let ime of name) {
-    if (ime === "a" || ime === "e" || ime === "i" || ime === "o" || ime === "u") {
+  for (let bukva of name) {
+    if (bukva === "a" || bukva === "e" || bukva === "i" || bukva === "o" || bukva === "u") {
       samoglaski++;
     }
   }
