@@ -23,7 +23,7 @@ const getFile = async (file, data1, data2, data3, data4, data5, data6, data7) =>
 
 const getFormular = async (req, res) => {
     try {
-        let output = await getFile('formularGet', '')
+        let output = await getFile('formularGet')
         res.send(output)
     } catch (err) {
         console.log(err);
