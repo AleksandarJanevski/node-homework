@@ -39,6 +39,7 @@ const postFormular = async (req, res) => {
 
     let rezultat = req.body.tekst.toLowerCase();
     let zborovi = rezultat.split(" ");
+    zborovi = zborovi.filter(item => item !== '');
     let pomali = 0;
     let pogolemi = 0;
     let samoglaski = ["a", "e", "i", "o", "u"];
@@ -56,8 +57,8 @@ const postFormular = async (req, res) => {
         if (samoglaski.includes(zbor[0])) {
             samoglaskiCounter++
         }
-        for (let bukva of zbor) {
-            if (znaci.includes(bukva)) {
+        for (let karakter of zbor) {
+            if (znaci.includes(karakter)) {
                 recenici++
             }
         }
