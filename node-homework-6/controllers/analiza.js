@@ -27,6 +27,7 @@ const getFormular = async (req, res) => {
         res.send(output)
     } catch (err) {
         console.log(err);
+        res.status(500).send('internal server error');
     }
 }
 
