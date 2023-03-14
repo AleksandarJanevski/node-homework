@@ -35,9 +35,10 @@ const postFormular = async (req, res) => {
     let zborovi = rezultat.split(" ");
     let pomali = 0;
     let pogolemi = 0;
-    let recenici = rezultat.split(".");
     let samoglaski = ["a", "e", "i", "o", "u"]
     let samoglaskiCounter = 0;
+    let znaci = ["!", "?", ";", "."]
+    let recenici = 0;
 
     for (let zbor of zborovi) {
         if (zbor.length < 5) {
@@ -49,10 +50,15 @@ const postFormular = async (req, res) => {
         if (samoglaski.includes(zbor[0])) {
             samoglaskiCounter++
         }
+        for (let bukva of zbor) {
+            if (znaci.includes(bukva)) {
+                recenici++
+            }
+        }
     }
 
     try {
-        let output = await getFile('rezultatiPost', rezultat.length, pomali, pogolemi, (zborovi.length - pogolemi - pomali), recenici.length, zborovi.length, samoglaskiCounter)
+        let output = await getFile('rezultatiPost', rezultat.length, pomali, pogolemi, (zborovi.length - pogolemi - pomali), recenici, zborovi.length, samoglaskiCounter)
         res.send(output);
     } catch (err) {
         console.log(err);
