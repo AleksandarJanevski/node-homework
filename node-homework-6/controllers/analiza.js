@@ -32,11 +32,16 @@ const getFormular = async (req, res) => {
 }
 
 const postFormular = async (req, res) => {
+
+    if (req.body.tekst.trim() === '') {
+        return res.status(400).send('bad request');
+    }
+
     let rezultat = req.body.tekst.toLowerCase();
     let zborovi = rezultat.split(" ");
     let pomali = 0;
     let pogolemi = 0;
-    let samoglaski = ["a", "e", "i", "o", "u"]
+    let samoglaski = ["a", "e", "i", "o", "u"];
     let samoglaskiCounter = 0;
     let znaci = ["!", "?", ";", "."]
     let recenici = 0;
