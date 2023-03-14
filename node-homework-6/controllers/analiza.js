@@ -49,17 +49,17 @@ const postFormular = async (req, res) => {
 
     for (let zbor of zborovi) {
         if (zbor.length < 5) {
-            pomali++
+            pomali++;
         }
         if (zbor.length > 5) {
-            pogolemi++
+            pogolemi++;
         }
         if (samoglaski.includes(zbor[0])) {
-            samoglaskiCounter++
+            samoglaskiCounter++;
         }
         for (let karakter of zbor) {
             if (znaci.includes(karakter)) {
-                recenici++
+                recenici++;
             }
         }
     }
