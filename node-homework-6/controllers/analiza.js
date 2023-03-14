@@ -44,7 +44,7 @@ const postFormular = async (req, res) => {
     let pogolemi = 0;
     let samoglaski = ["a", "e", "i", "o", "u"];
     let samoglaskiCounter = 0;
-    let znaci = ["!", "?", ";", "."]
+    let znaci = ["!", "?", ";", "."];
     let recenici = 0;
 
     for (let zbor of zborovi) {
@@ -65,11 +65,11 @@ const postFormular = async (req, res) => {
     }
 
     try {
-        let output = await getFile('rezultatiPost', rezultat.length, pomali, pogolemi, (zborovi.length - pogolemi - pomali), recenici, zborovi.length, samoglaskiCounter)
+        let output = await getFile('rezultatiPost', rezultat.length, pomali, pogolemi, (zborovi.length - pogolemi - pomali), recenici, zborovi.length, samoglaskiCounter);
         res.send(output);
     } catch (err) {
         console.log(err);
-        res.status(500).send('internal server error')
+        res.status(500).send('internal server error');
     }
 
 }
