@@ -23,9 +23,10 @@ const getStudenti = async (req, res) => {
 
 const izbrisiStudent = async (req, res) => {
     let arrayJSON = await praseJSON();
-    let index = req.query.i;
+    let index = parseInt(req.query.i);
     arrayJSON = arrayJSON.filter((element, i) => i !== index);
     await writeToJSON(arrayJSON);
+    res.redirect('/studenti')
 }
 
 
