@@ -26,7 +26,6 @@ const izbrisiStudent = async (req, res) => {
     let index = req.query.i;
     arrayJSON = arrayJSON.filter((element, i) => i !== index);
     await writeToJSON(arrayJSON);
-    res.send(req.query.i);
 }
 
 
