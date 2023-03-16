@@ -11,6 +11,7 @@ app.get('/form', actions.getForm);
 app.post('/form', actions.postForm);
 app.get('/studenti', actions.getStudenti);
 app.get('/brishi', actions.izbrisiStudent);
+app.get('/bad-request', actions.badRequest);
 
 app.listen(8000, err => {
     if (err) return console.log(err);

@@ -9,7 +9,8 @@ const postForm = async (req, res) => {
     const { ime, prezime, prosek } = req.body;
 
     if (ime.trim() === '' || prezime.trim() === '') {
-        return res.status(400).send('Bad Request');
+        // return res.status(400).send('Bad Request');
+        return res.redirect('bad-request');
     }
 
     let formObj = { name: ime, surname: prezime, average: prosek };
@@ -31,10 +32,14 @@ const izbrisiStudent = async (req, res) => {
     res.redirect('/studenti');
 };
 
+const badRequest = (req, res) => {
+    res.render('badRequest');
+}
 
 module.exports = {
     getForm,
     postForm,
     getStudenti,
-    izbrisiStudent
+    izbrisiStudent,
+    badRequest
 };
