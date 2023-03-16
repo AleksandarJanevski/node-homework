@@ -1,11 +1,11 @@
 const express = require('express');
-const actions = require('./controllers/actions')
+const actions = require('./controllers/actions');
 
 const app = express();
 
 app.set('view engine', 'ejs');
 
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/form', actions.getForm);
 app.post('/form', actions.postForm);
